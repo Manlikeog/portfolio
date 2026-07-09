@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timilehin Oguntade — Software Engineer</title>
+<meta name="description" content="Timilehin Oguntade — Software Engineer in the United Kingdom. React, Flutter, CI/CD. Builder of Epawo (live fintech app) and Mindful Mate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F7F3;
+    --card:#FFFFFF;
+    --ink:#141F19;
+    --ink-soft:#41524A;
+    --green:#0C6B47;
+    --green-deep:#084D33;
+    --tag:#DFF3E7;
+    --line:#D8E0DA;
+    --mono-grey:#66756D;
+    --amber:#B9781B;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace}
+  a{color:var(--green);text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,247,243,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;max-width:1060px;margin:0 auto}
+  .nav-name{font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-.01em;color:var(--ink)}
+  .nav-name:hover{text-decoration:none}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--ink-soft)}
+  .nav-links a:hover{color:var(--green);text-decoration:none}
+  .nav-cta{
+    background:var(--green);color:#fff!important;padding:8px 16px;border-radius:6px;font-weight:500;
+  }
+  .nav-cta:hover{background:var(--green-deep);text-decoration:none}
+  @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* ---------- hero ---------- */
+  header{padding:88px 0 72px;border-bottom:1px solid var(--line)}
+  .status-line{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--green-deep);
+    background:var(--tag);border:1px solid #BFE3CE;border-radius:100px;
+    padding:6px 16px;margin-bottom:30px;
+  }
+  .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);position:relative}
+  .pulse::after{
+    content:'';position:absolute;inset:-4px;border-radius:50%;
+    border:2px solid var(--green);opacity:0;
+    animation:ping 2.2s ease-out infinite;
+  }
+  @keyframes ping{0%{transform:scale(.5);opacity:.8}80%,100%{transform:scale(1.4);opacity:0}}
+  h1{
+    font-family:'Archivo',sans-serif;font-weight:900;
+    font-size:clamp(2.6rem,6.4vw,4.6rem);
+    line-height:1.02;letter-spacing:-.03em;
+    max-width:15ch;
+  }
+  h1 .accent{color:var(--green)}
+  .hero-sub{
+    margin-top:26px;font-size:1.12rem;color:var(--ink-soft);max-width:56ch;
+  }
+  .hero-sub strong{color:var(--ink);font-weight:600}
+  .hero-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:8px;font-weight:600;font-size:.95rem;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{text-decoration:none;transform:translateY(-1px)}
+  .btn-solid{background:var(--green);color:#fff}
+  .btn-solid:hover{background:var(--green-deep)}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--ink);background:var(--card)}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green)}
+  .hero-meta{
+    margin-top:44px;display:flex;gap:34px;flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--mono-grey);
+  }
+  .hero-meta span b{display:block;color:var(--ink);font-size:.92rem;font-weight:500}
+
+  /* ---------- section scaffolding ---------- */
+  section{padding:76px 0;border-bottom:1px solid var(--line)}
+  .kicker{
+    font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--green);margin-bottom:14px;display:block;
+  }
+  h2{
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(1.7rem,3.4vw,2.4rem);
+    letter-spacing:-.02em;margin-bottom:14px;
+  }
+  .section-intro{color:var(--ink-soft);max-width:62ch;margin-bottom:44px}
+
+  /* ---------- featured project (Epawo) ---------- */
+  .flagship{
+    background:var(--ink);color:#E8EFEA;border-radius:18px;
+    padding:52px;display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center;
+  }
+  @media(max-width:800px){.flagship{grid-template-columns:1fr;padding:34px}}
+  .flagship .kicker{color:#7ED8A9}
+  .flagship h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.02em;color:#fff;margin-bottom:14px}
+  .flagship p{color:#B8C6BD;font-size:1rem}
+  .flag-stats{display:flex;gap:30px;margin:26px 0;flex-wrap:wrap}
+  .flag-stats div b{display:block;font-family:'Archivo',sans-serif;font-size:1.5rem;font-weight:800;color:#fff}
+  .flag-stats div span{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:#7E9187}
+  .store-links{display:flex;gap:12px;flex-wrap:wrap}
+  .store-btn{
+    display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--ink);
+    padding:11px 18px;border-radius:8px;font-weight:600;font-size:.88rem;
+  }
+  .store-btn:hover{background:var(--tag);text-decoration:none}
+  .phone{
+    position:relative;justify-self:center;width:230px;background:#0A120E;border:3px solid #2A3A31;border-radius:42px;
+    padding:12px;box-shadow:0 24px 60px rgba(0,0,0,.45);
+  }
+  .phone::before{
+    content:'';position:absolute;top:78px;left:-3px;width:3px;height:28px;background:#2A3A31;
+    border-radius:2px 0 0 2px;
+    box-shadow:0 40px 0 0 #2A3A31, 0 74px 0 0 #2A3A31;
+  }
+  .phone::after{
+    content:'';position:absolute;top:110px;right:-3px;width:3px;height:56px;background:#2A3A31;
+    border-radius:0 2px 2px 0;
+  }
+  .phone-screen{position:relative;border-radius:32px;overflow:hidden;aspect-ratio:9/19.5}
+  .phone-screen img{display:block;width:100%;height:100%;object-fit:cover}
+  .phone-screen::after{
+    content:'';position:absolute;top:9px;left:50%;transform:translateX(-50%);
+    width:76px;height:22px;background:#0A120E;border-radius:14px;z-index:2;
+  }
+
+  /* ---------- project cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;margin-top:44px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px;
+    display:flex;flex-direction:column;gap:14px;
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(12,107,71,.09);border-color:#BFD6C8}
+  .card h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:-.01em}
+  .card p{font-size:.94rem;color:var(--ink-soft);flex:1}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{
+    font-family:'IBM Plex Mono',monospace;font-size:.68rem;
+    background:var(--tag);color:var(--green-deep);
+    padding:4px 10px;border-radius:100px;
+  }
+  .card a.card-link{font-size:.88rem;font-weight:600}
+
+  /* ---------- changelog timeline ---------- */
+  .release{position:relative;padding-left:46px;padding-bottom:52px}
+  .release:last-child{padding-bottom:0}
+  .release::before{
+    content:'';position:absolute;left:11px;top:8px;bottom:-8px;width:2px;background:var(--line);
+  }
+  .release:last-child::before{display:none}
+  .release::after{
+    content:'';position:absolute;left:4px;top:6px;width:16px;height:16px;border-radius:50%;
+    background:var(--paper);border:3px solid var(--green);
+  }
+  .rel-tag{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--green-deep);
+    background:var(--tag);padding:3px 10px;border-radius:5px;margin-right:10px;
+  }
+  .rel-date{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--mono-grey)}
+  .release h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.22rem;margin:10px 0 4px;letter-spacing:-.01em}
+  .rel-org{font-size:.9rem;color:var(--green);font-weight:600;margin-bottom:8px}
+  .release p{color:var(--ink-soft);font-size:.95rem;max-width:62ch}
+  .release-body{display:flex;gap:24px;align-items:flex-start;justify-content:space-between}
+  .release-photo{
+    width:84px;height:84px;border-radius:12px;object-fit:cover;flex-shrink:0;
+    border:1px solid var(--line);box-shadow:0 8px 20px rgba(12,107,71,.12);
+  }
+  @media(max-width:600px){.release-body{flex-direction:column}.release-photo{width:100px;height:100px}}
+
+  /* ---------- skills ---------- */
+  .skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:40px}
+  .skill-group{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+  .skill-group h3{
+    font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--mono-grey);margin-bottom:16px;
+  }
+  .skill-group .chips .chip{font-size:.74rem;padding:6px 12px}
+
+  /* ---------- about + contact ---------- */
+  .about-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:52px;align-items:start}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+  .about-grid p{color:var(--ink-soft);margin-bottom:16px}
+  .about-photo{
+    width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:14px;
+    border:1px solid var(--line);box-shadow:0 14px 34px rgba(12,107,71,.12);margin-bottom:22px;
+  }
+  .fact-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+  .fact-box dt{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mono-grey);margin-top:16px}
+  .fact-box dt:first-child{margin-top:0}
+  .fact-box dd{font-weight:500;font-size:.95rem;margin-top:2px}
+
+  footer{padding:70px 0 60px;text-align:left}
+  footer h2{max-width:20ch}
+  .contact-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .foot-note{margin-top:44px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--mono-grey)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="#top">TO<span style="color:var(--green)">.</span></a>
+    <div class="nav-links">
+      <a href="#work">work</a>
+      <a href="#changelog">changelog</a>
+      <a href="#skills">skills</a>
+      <a href="#about">about</a>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div class="status-line"><span class="pulse"></span>shipping software · open to opportunities · United Kingdom</div>
+    <h1>I build software that's <span class="accent">live in production.</span></h1>
+    <p class="hero-sub">
+      I'm <strong>Timilehin Oguntade</strong>, a software engineer specialising in <strong>React and Flutter</strong>,
+      with an MSc in Software Engineering (Distinction). My work isn't hypothetical:
+      the fintech app I helped build is on the App Store and Google Play right now, serving real users.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="#work">See my work ↓</a>
+      <a class="btn btn-ghost" href="https://github.com/Manlikeog" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/timilehin-oguntade-039558218/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="hero-meta">
+      <span><b>5+ years</b>building software</span>
+      <span><b>MSc Distinction</b>Software Engineering, Herts</span>
+      <span><b>1 live app</b>Play Store &amp; App Store</span>
+      <span><b>95%</b>test coverage discipline</span>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <span class="kicker">// featured work</span>
+    <h2>Proof, not promises.</h2>
+    <p class="section-intro">The clearest signal a hiring manager can get: software you can download and use today.</p>
+
+    <div class="flagship">
+      <div>
+        <span class="kicker">// flagship · live in production</span>
+        <h3>Epawo by EgolePay</h3>
+        <p>
+          A consumer fintech app for payments and financial services in Nigeria.
+          I built core UI flows and API integrations in Flutter, working within a
+          CI/CD pipeline (Codemagic, Fastlane) that shipped releases to both stores.
+        </p>
+        <div class="flag-stats">
+          <div><b>4.2★</b><span>GOOGLE PLAY RATING</span></div>
+          <div><b>2</b><span>STORES · iOS + ANDROID</span></div>
+          <div><b>Live</b><span>IN PRODUCTION TODAY</span></div>
+        </div>
+        <div class="store-links">
+          <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.epawoo.mobile" target="_blank" rel="noopener">▶ Google Play</a>
+          <a class="store-btn" href="https://apps.apple.com/ng/app/epawoo-by-egolepay/id6747831653" target="_blank" rel="noopener"> App Store</a>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="phone-screen">
+          <img src="epawo-screen.png" alt="Epawo by EgolePay sign-in screen">
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Mindful Mate</h3>
+        <p>Gamified mental-health companion built in Flutter with Riverpod state management and LCOV-tracked test coverage. My MSc dissertation project, awarded a Distinction.</p>
+        <div class="chips"><span class="chip">Flutter</span><span class="chip">Riverpod</span><span class="chip">TDD</span><span class="chip">LCOV</span></div>
+        <a class="card-link" href="https://github.com/Manlikeog/mindful_mate" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <div class="card">
+        <h3>Staff Rota Builder</h3>
+        <p>A React app that generates multi-week staff rotas for a supported-living service, handling complex contracted-hours rules and exporting straight to Word, Excel and PDF. Built to solve a real operational problem I saw first-hand.</p>
+        <div class="chips"><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">docx/xlsx export</span></div>
+      </div>
+      <div class="card">
+        <h3>BUNTER CORE</h3>
+        <p>Co-founder of a housing technology startup focused on compliance automation for the UK modular housing sector, from product concept through business planning.</p>
+        <div class="chips"><span class="chip">Product</span><span class="chip">Compliance tech</span><span class="chip">Co-founder</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="changelog">
+  <div class="wrap">
+    <span class="kicker">// changelog</span>
+    <h2>Career, versioned.</h2>
+    <p class="section-intro">Every engineer's history is a series of releases. Here's mine, in reverse chronological order.</p>
+
+    <div class="release">
+      <span class="rel-tag">v3.2</span><span class="rel-date">Dec 2025 — present</span>
+      <h3>Support Worker</h3>
+      <div class="rel-org">CareTech Community Services · Stockport</div>
+      <p>Frontline supported-living work alongside part-time engineering: producing CQC-compliant documentation and building internal tooling (the rota app above) where I spotted the need.</p>
+    </div>
+
+    <div class="release">
+      <span class="rel-tag">v3.0</span><span class="rel-date">Jan 2024 — May 2025</span>
+      <div class="release-body">
+        <div>
+          <h3>MSc Software Engineering — Distinction</h3>
+          <div class="rel-org">University of Hertfordshire</div>
+          <p>Advanced software engineering with a dissertation building Mindful Mate. Moved to part-time remote work with EgolePay to focus on the degree.</p>
+        </div>
+        <img class="release-photo" src="timi-graduation.jpg" alt="Timilehin Oguntade graduating from the University of Hertfordshire">
+      </div>
+    </div>
+
+    <div class="release">
+      <span class="rel-tag">v2.5</span><span class="rel-date">Oct 2023 — Jan 2024 · part-time remote Jan 2024 — present</span>
+      <h3>Software Engineer</h3>
+      <div class="rel-org">EgolePay Limited · fintech</div>
+      <p>Built UI flows and API integrations for Epawo, a consumer payments app now live on both app stores. Full-time through Jan 2024, continuing part-time and remote since.</p>
+    </div>
+
+    <div class="release">
+      <span class="rel-tag">v2.0</span><span class="rel-date">Sep 2022 — Dec 2023</span>
+      <h3>Software Engineer</h3>
+      <div class="rel-org">FPG Technologies · Lagos</div>
+      <p>Delivered client-facing software with React and mobile stacks, working in CI/CD pipelines with automated testing as standard practice.</p>
+    </div>
+
+    <div class="release">
+      <span class="rel-tag">v1.5</span><span class="rel-date">Jan 2021 — Sep 2022</span>
+      <h3>Software Developer</h3>
+      <div class="rel-org">Lagos State Ministry</div>
+      <p>Built and maintained internal systems for public-sector service delivery, learning to ship software in a large, process-driven organisation.</p>
+    </div>
+
+    <div class="release">
+      <span class="rel-tag">v1.0</span><span class="rel-date">2020</span>
+      <h3>Software Engineering Intern</h3>
+      <div class="rel-org">Ghost Tech</div>
+      <p>First commit. Foundations in professional software development after a BSc in Computer Science at Bowen University.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="kicker">// stack</span>
+    <h2>Tools I ship with.</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Frontend &amp; Mobile</h3>
+        <div class="chips">
+          <span class="chip">React.js</span><span class="chip">React Native</span><span class="chip">Flutter / Dart</span><span class="chip">JavaScript</span><span class="chip">Riverpod</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Backend &amp; Cloud</h3>
+        <div class="chips">
+          <span class="chip">RESTful APIs</span><span class="chip">Firebase</span><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Node.js</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Delivery &amp; Quality</h3>
+        <div class="chips">
+          <span class="chip">GitHub Actions</span><span class="chip">Codemagic</span><span class="chip">Fastlane</span><span class="chip">Azure DevOps</span><span class="chip">TDD · 95% coverage</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <span class="kicker">// about</span>
+    <h2>Engineer first. Grafter always.</h2>
+    <div class="about-grid">
+      <div>
+        <p>
+          I started writing production code in Lagos, one of the most demanding fintech markets in the world,
+          where an app that fails a transaction loses a customer for good. That environment taught me to treat
+          testing, CI/CD and release discipline as non-negotiable, not nice-to-have.
+        </p>
+        <p>
+          I came to the UK to level up formally, finishing my MSc in Software Engineering with a Distinction
+          while continuing part-time remote engineering work. Right now I combine frontline support work with
+          software: and when I saw my team drowning in manual rota planning, I built them an app for it.
+          That's how I work: I find the problem in front of me and ship the fix.
+        </p>
+        <p>
+          I'm looking for roles across software engineering, IT support, QA and business analysis: anywhere
+          rigorous thinking and shipped software matter.
+        </p>
+      </div>
+      <img class="about-photo" src="timi-headshot.jpg" alt="Timilehin Oguntade">
+      <dl class="fact-box">
+        <dt>Location</dt><dd>United Kingdom</dd>
+        <dt>Phone</dt><dd><a href="tel:+447983653718">07983 653718</a></dd>
+        <dt>Email</dt><dd><a href="mailto:timilehin883@gmail.com">timilehin883@gmail.com</a></dd>
+        <dt>Education</dt><dd>MSc Software Engineering (Distinction), University of Hertfordshire · BSc Computer Science, Bowen University</dd>
+        <dt>Right to work</dt><dd>Graduate visa valid to Oct 2027 · eligible for Skilled Worker sponsorship (new-entrant threshold)</dd>
+        <dt>Availability</dt><dd>Remote, hybrid or full-time · immediate start</dd>
+        <dt>Driving licence</dt><dd>Full UK driving licence</dd>
+        <dt>Interests</dt><dd>AI agents · automotive engineering · fintech</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="kicker">// contact</span>
+    <h2>Let's build something that ships.</h2>
+    <p class="section-intro" style="margin-bottom:0">If you're hiring, or just want to talk software, I'd genuinely like to hear from you.</p>
+    <div class="contact-row">
+      <a class="btn btn-solid" href="https://www.linkedin.com/in/timilehin-oguntade-039558218/" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      <a class="btn btn-ghost" href="mailto:timilehin883@gmail.com">timilehin883@gmail.com</a>
+      <a class="btn btn-ghost" href="tel:+447983653718">07983 653718</a>
+      <a class="btn btn-ghost" href="https://github.com/Manlikeog" target="_blank" rel="noopener">github.com/Manlikeog</a>
+    </div>
+    <p class="foot-note">© 2026 Timilehin Oguntade · built by hand, shipped with care</p>
+  </div>
+</footer>
+
+</body>
+</html>

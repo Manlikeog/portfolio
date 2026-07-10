@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#0C6B47"/>
+  <text x="50%" y="340" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif" font-weight="700"
+        font-size="248" letter-spacing="-6" fill="#FFFFFF">TO</text>
+  <circle cx="406" cy="330" r="20" fill="#7ED8A9"/>
+</svg>
